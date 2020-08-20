@@ -1,42 +1,59 @@
 <template>
-  <v-layout class="grid-container">
-    <div class="top-left">
-      <Heading :pageTitle="pageTitle" />
-    </div>
-    <div class="top-right">
-      <Nav />
-      <div class="work-area">
-        <p class="work-name">Project Set</p>
-        <v-btn depressed height="55px" color="#a64de9" class="btn">Visit Site</v-btn>
-        <v-btn depressed height="55px" color="#a64de9" class="btn">View Code</v-btn>
-      </div>
-    </div>
-
-    <div class="footer">
-      <img class="img-move" src="../assets/projectset.png" alt />
-    </div>
-    <div class="desc">
-      <p>
-        Built with Vue and Firebase Project Set is a
-        simple solution for managing route setting
-        programs in a climbing gym
-      </p>
-    </div>
+  <v-layout >
+    <WorkShowcase :key="activeSlide.title" :work="activeSlide" />
+    <Next @clicked="showNext" />
   </v-layout>
 </template>
 <script>
-import Nav from '../components/Nav'
-import Heading from '../components/Heading'
+import WorkShowcase from '../components/WorkShowcase'
+import Next from '../components/Next'
 export default {
   data() {
     return {
-      pageTitle: 'Work',
+      workSlide:[
+        {
+          title: "Project Set",
+          source: "../assets/projectset.png",
+          description: "Built with Vue and Firebase Project Set is a simple solution for managing route setting programs in a climbing gym "
+        },
+    
+        {
+          title: "Ten Sleep Yoga",
+          source: "../assets/projectset.png",
+          description: "Built with Vue and Firebase Project Set is a simple solution for managing route setting programs in a climbing gym "
+        },
+        {
+          title: "Schooley and Sons Tackle",
+          source: "../assets/projectset.png",
+          description: "Built with Vue and Firebase Project Set is a simple solution for managing route setting programs in a climbing gym "
+        }
+      ],
+      activeSlide:{
+          title: "Project Set",
+          source: "../assets/projectset.png",
+          description: "Built with Vue and Firebase Project Set is a simple solution for managing route setting programs in a climbing gym "
+        }
     }
   },
   components: {
-    Nav,
-    Heading,
+    WorkShowcase,
+    Next
   },
+  methods:{
+    showNext(value){
+      let slideLength = this.workSlide.length
+      let slideIndex = this.workSlide.findIndex(slide => slide.title === this.activeSlide.title)
+      slideIndex += 1
+      
+      if(slideLength === slideIndex){
+        slideIndex = 0
+      }
+     
+     this.activeSlide = this.workSlide[slideIndex]
+     
+    
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -50,6 +67,7 @@ export default {
     display: grid;
     grid-template-rows: 70% auto;
     grid-area: main-nav;
+    
     .work-area {
       color: #a64de9;
       font-size: 1.5rem;
@@ -63,7 +81,6 @@ export default {
       }
     }
   }
-
   .footer {
     .img-move {
       width: 45vw;
@@ -87,11 +104,19 @@ export default {
     }
   }
   display: grid;
-
   grid-template-columns: 50% 50%;
   grid-template-rows: auto 40%;
   grid-template-areas:
     'heading main-nav'
     'footer desc';
+    
+}
+@media only screen and (min-width: 1450px) {
+  .grid-container{
+ .footer{
+   .img-move{
+     bottom: 26vh;
+   }
+ }}
 }
 </style>

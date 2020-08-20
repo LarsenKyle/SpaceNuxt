@@ -1,6 +1,6 @@
 <template>
   <v-layout class="bg-img">
-    <WorkBtn />
+    <WorkBtn class="action" />
     <Nav />
   </v-layout>
 </template>
@@ -18,11 +18,12 @@ export default {
 <style lang="scss">
 .bg-img {
   background-image: url('../assets/space.svg');
-
-  /* Center and scale the image nicely */
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
+  .action{
+    margin-right: 15rem;
+  }
 }
 @media only screen and (max-width: 1500px) {
   .bg-img {
@@ -30,4 +31,6 @@ export default {
     background-size: cover;
   }
 }
+
+
 </style>

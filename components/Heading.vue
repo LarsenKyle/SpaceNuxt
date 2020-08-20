@@ -1,6 +1,6 @@
 <template>
-  <div class="heading mt-12">
-    <h3>Explore My {{pageTitle}}</h3>
+  <div id="fix-head" class="heading">
+    <h3>{{pageTitle}}</h3>
     <div class="line"></div>
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
 </script>
 
 <style lang="scss">
+#fix-head{
+  position: fixed;
+  top: 5vh;
+  left: 3vw;
+}
 .heading {
   color: #a64de9;
   h3 {

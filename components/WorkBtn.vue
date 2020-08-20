@@ -64,26 +64,41 @@
         </svg>
       </a>
     </div>
-    <v-btn depressed height="55px" color="#a64de9" class="btn">Discover My Work</v-btn>
+    <v-btn @click="myWork" depressed height="55px" color="#a64de9" class="btn">Discover My Work</v-btn>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods:{
+    myWork(){
+      this.$router.push({path: "work"})
+    }
+  }
+}
 </script>
 
 <style lang="scss">
 .discover {
   position: absolute;
-  top: 50%;
-  left: 18%;
+  top: 50vh;
+  left: 12vw;
 }
 .bg-img {
   .btn {
     color: white;
-    width: 350px;
+    width: 300px;
     font-size: 1.2rem;
     letter-spacing: 1.5px;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .bg-img{
+    .btn{
+      width: 200px;
+      font-size: 1rem;
+    
+    }
   }
 }
 </style>
