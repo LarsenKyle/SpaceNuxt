@@ -17,17 +17,17 @@ export default {
 </script>
 
 <style lang="scss">
-#fix-head{
+#fix-head {
   position: fixed;
   top: 5vh;
   left: 3vw;
 }
+h3 {
+  font-size: 2.2rem;
+  font-weight: normal;
+}
 .heading {
   color: #a64de9;
-  h3 {
-    font-size: 2.2rem;
-    font-weight: normal;
-  }
 }
 .line {
   background-color: #a64de9;
